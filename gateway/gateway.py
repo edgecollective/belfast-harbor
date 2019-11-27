@@ -92,11 +92,13 @@ while True:
                 response = requests.post(JSON_POST_URL, json=json_data)
                 response.close()
 
+                print("Done. Sleeping ... ")
+                time.sleep(90)
+
             else:
                 print("garbled message")
 
-            print("Done. Sleeping ... ")
-            time.sleep(90)
+            
             
         except Exception as e:
             print("error: "+str(e))
