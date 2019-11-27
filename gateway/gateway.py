@@ -70,38 +70,35 @@ while True:
     packet = rfm9x.receive(timeout=TIMEOUT)
 
     if packet is not None:
-        try:
 
-            pt = str(packet, 'ascii').strip()
-            print("Received: ",pt)
+        pt = str(packet, 'ascii').strip()
+        print("Received: ",pt)
 
-            params=pt.split(",")
-            print(params)
+        params=pt.split(",")
+        print(params)
+        
+        if len(params)==6:
+
+            packetNum = float(params[0].strip('M'))
+            depthTemp=float(params[1])
+            depthPress=float(params[2])
+            surfaceTemp=float(params[3])
+            surfacePress=float(params[4])
+            vBat=float(params[5].strip('\n\x00'))
+
+            json_data = {"depthTemp":depthTemp,"depthPress":depthPress,"surfaceTemp":surfaceTemp,"surfacePress":surfacePress,"vBat":vBat,"packetNum":packetNum}
             
-            if len(params)==3:
+            print(json_data)
 
-                p1 = params[0]
-                p2 = params[1]
-                p3 = params[2]
-
-                json_data = {"p1" : p1, "p2": p2, "p3":p3}
-
-                print("Posting to ",JSON_POST_URL)
-                
-                connect(WIFI_ESSID,WIFI_PASS)
-                response = requests.post(JSON_POST_URL, json=json_data)
-                response.close()
-
-                print("Done. Sleeping ... ")
-                time.sleep(90)
-
-            else:
-                print("garbled message")
-
+            print("Posting to ",JSON_POST_URL)
             
-            
-        except Exception as e:
-            print("error: "+str(e))
+            connect(WIFI_ESSID,WIFI_PASS)
+            response = requests.post(JSON_POST_URL, json=json_data)
+            response.close()
+
+            print("Done. Sleeping ... ")
+            time.sleep(90)
+
 
 
 
