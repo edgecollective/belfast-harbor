@@ -9,9 +9,13 @@ https://github.com/DaveSprague/Belfast-Harbor-Tide-Project
 ### M4, ESP2
 
 D10, CS
+
 D11, RESET
+
 D9, BUSY
+
 MISO, MISO
+
 MOSI, MOSI
 SCK, SCK
 USB, VIN
