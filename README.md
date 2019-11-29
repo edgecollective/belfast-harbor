@@ -13,8 +13,8 @@ To upgrade CircuitPython, double-press the RESET button; this will bring up the 
 ## Gateway Firmware 
 
 - Copy the entire 'lib' folder to the CIRCUITPYTHON drive. 
-- Copy gateway.py to the drive.
-- Rename 'dummy_secrets.py' to 'secrets.py' and add your WiFi credentials, along with your farmos public_key and private_key
+- Copy gateway.py to 'main.py' and copy it to the CIRCUITPYTHON drive 
+- Rename 'dummy_secrets.py' to 'secrets.py' and add your WiFi credentials, along with your farmos public_key and private_key; then copy 'secrets.py' to the CIRCUITPYTHON drive.
 
 ## Wiring
 
